@@ -1,4 +1,4 @@
-module github.com/signalsciences/oxy
+module github.com/vulcand/oxy
 
 go 1.13
 
