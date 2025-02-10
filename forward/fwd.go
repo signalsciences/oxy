@@ -92,6 +92,15 @@ func WebsocketNetDialContext(dialContext func(ctx context.Context, network strin
 	}
 }
 
+// WebsocketDialBuffers sets the websocket Dialer's Read and Write buffer sizes in bytes
+func WebsocketDialBuffers(readBufferSize, writeBufferSize int) optSetter {
+	return func(f *Forwarder) error {
+		f.websocketDialer.ReadBufferSize = readBufferSize
+		f.websocketDialer.WriteBufferSize = writeBufferSize
+		return nil
+	}
+}
+
 // ErrorHandler is a functional argument that sets error handler of the server.
 func ErrorHandler(h utils.ErrorHandler) optSetter {
 	return func(f *Forwarder) error {
